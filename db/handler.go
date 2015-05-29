@@ -1,6 +1,8 @@
 package main
 
-import ()
+import (
+	"github.com/gocql/gocql"
+)
 
 type Handler struct {
 	Messages []*Message

@@ -11,7 +11,7 @@ import (
 var (
 	listenPort = flag.Int("port", 8042, "Port to listen on")
 	server     = flag.String("server", "emotorwerks.com", "Destination to proxy to")
-	logFile    = flag.String("logfile", "Juicebox.log", "File to log traffic to")
+	logFile    = flag.String("logfile", "", "File to log traffic to. (~/.juicebox_log default)")
 )
 
 func init() {
@@ -22,7 +22,7 @@ func main() {
 
 	proxy := &udp.UdpProxy{}
 
-	handler := &logger.FileLogger{}
+	handler := logger.New(*logFile)
 
 	proxy.AddHandler(handler)
 
